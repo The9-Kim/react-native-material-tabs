@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import {
   Animated,
-  ScrollView,
+  // ScrollView,
   View,
   ScrollViewProps,
   StyleProp,
   TextStyle,
   I18nManager,
 } from 'react-native';
+
+import { ScrollView } from 'react-native-gesture-handler';
 
 import Tab from './Tab';
 import Indicator from './Indicator';
