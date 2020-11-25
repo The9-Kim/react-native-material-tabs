@@ -154,7 +154,7 @@ const MaterialTabs: React.FC<Props> = ({
                 key={getKeyForTab(item) || undefined}
                 onPress={() => {
                   // console.log(idx, barWidth, scrollView && scrollView); //scrollView.current && scrollView.current.scrollTo);
-                  // scrollView.current && scrollView.current.scrollTo(idx * barWidth * 0.23)
+                  scrollView.current && scrollView.current.scrollTo(idx * barWidth * 0.23)
                   onChange(idx);
                 }}
                 active={idx === selectedIndex}
