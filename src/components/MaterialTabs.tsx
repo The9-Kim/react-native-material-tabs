@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import {
   Animated,
   // ScrollView,
@@ -56,8 +56,9 @@ const MaterialTabs: React.FC<Props> = ({
   const [tabWidth, setTabWidth] = useState(0);
   const [barWidth, setBarWidth] = useState(0);
   const [indicatorPosition] = useState(new Animated.Value(0));
-  const scrollView = React.createRef<ScrollView>();
-  const bar = React.createRef<View>();
+  
+  const scrollView = useRef(null);
+  const bar = useRef(null);
 
   const getTabWidth = useCallback(
     (width: number = 0) => {
@@ -151,7 +152,11 @@ const MaterialTabs: React.FC<Props> = ({
                 allowFontScaling={allowFontScaling}
                 content={item}
                 key={getKeyForTab(item) || undefined}
-                onPress={() => onChange(idx)}
+                onPress={() => {
+                  // console.log(idx, barWidth, scrollView && scrollView); //scrollView.current && scrollView.current.scrollTo);
+                  // scrollView.current && scrollView.current.scrollTo(idx * barWidth * 0.23)
+                  onChange(idx);
+                }}
                 active={idx === selectedIndex}
                 activeTextColor={activeTextColor}
                 textStyle={textStyle}
